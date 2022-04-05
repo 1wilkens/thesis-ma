@@ -1,0 +1,47 @@
+% !TEX root ../thesis
+\chapter{Introduction\label{ch:Introduction}}
+
+\abstract{In this chapter we describe the motivation and aims of the thesis as well as preview our contributions.
+First, we explain why \glspl{bn} pose a threat to the Internet and motivate why \emph{Dridex} should be the focus of research.
+Then we briefly summarize the contributions of this thesis and give a general outline of the remaining chapters.}
+
+\section{Motivation\label{sec:Introduction::Motivation}}
+\Glspl{bn} are classified as an ever-growing risk to \acrshort{it} security.
+A cluster of compromised hosts (\glspl{bot}) is controlled by a \gls{c2} operated by the so-called \gls{bm}~\cite{aburajab2006multifaceted}.
+Malicious software (\gls{mw}) is installed on the machines which listens for commands from the \gls{c2} and executes them in the host context.
+These \glspl{bot} are then used to perform various malicious actions ranging from spam email delivery and distributed password cracking to full-blown \gls{ddos} attacks using the combined bandwidth available to all available \glspl{bot}.
+
+When the \gls{mw} collects credentials or credit card information from the compromised host it is usually sent back to the \gls{c2}.
+While traditional variants send the data directly to the server, \gls{p2p} \glspl{bn} are often organized hierarchically and relay the data to the \gls{c2}.
+This helps the \gls{bm} to stay hidden behind multiple layers of interconnected \glspl{bot} and prevent detection by law enforcement.
+
+It is therefore very important to gain insights into the communication protocols used in these sophisticated \glspl{bn} as well as their capabilities in regards to computing power and bandwidth.
+This knowledge can then be used to find potential design or implementation flaws in these hugely distributed systems which might aid in global takedown attempts.
+As the source code for \glspl{bn} is not freely available and communication with the \gls{c2} is heavily encrypted, the only way to gain insights into the protocols is through reverse engineering the malicious binary samples.
+However, \gls{mw} authors often implement a number of techniques to disrupt binary analysis such as obfuscation and packing.
+We estimate a significant time will be spent circumventing these protective measures until the relevant parts for message handling can be freely analyzed.
+
+In this thesis, we aim to reverse engineer and analyze one of the most dangerous \gls{p2p} \glspl{bn} today, the Dridex banking trojan.
+With over £20 million stolen in the United Kingdom alone (as of 2015), it is one of the most financially damaging trojans~\cite{nca2015uk}.
+Often cited for it
+Dridex is constantly adapted and updated to remain undetected and the \glspl{bm} behind it are often exploring new alternative revenue streams.
+While it started with classical credential stealing, a recent \gls{mw} strain was used to deliver ransomware.
+This broadens the target audience from online banking users to potentially every computer user worldwide.
+
+
+\section{Contributions\label{sec:Introduction::Contributions}}
+The reverse engineering process will be largely aided by IDA Pro\fnote{{\url{https://www.hex-rays.com/products/ida/overview.shtml}}}, a professional disassembling tool with advanced reconstruction abilities, as well as other standard tools for debugging, disassembly and other low-level tasks.
+This will be essential in understanding the obfuscated binary code of Dridex.
+The focus is hereby placed on the communication protocols as they represent the entry point in monitoring the \gls{bn}.
+The goal is to provide byte-level descriptions of as many messages as possible which can be used to directly construct valid payloads.
+Although the formats of those messages are updated (and hardened) from time to time, the general structure and included information should be useful in bootstrapping further research in the future.
+To validate the results obtained from reverse engineering a scanner will be implemented capable of detecting Dridex \glspl{sp} in large \gls{ip}-address ranges.
+Finally, the \emph{Dridex L2 Scanner} will then be invoked on some representative subnets to gain some knowledge about the \gls{bn}'s population count.
+
+
+\section{Outline\label{sec:Introduction::Outline}}
+In this first chapter, we highlighted the danger of \glspl{bn}, motivated analysis, takedowns and the Dridex L2 Scanner.
+The second chapter summarizes previous research and publications on the topic of \glspl{bn} in general and Dridex in particular.
+In \autoref{ch:Reverse_engineering_Dridex} we present the results of the reverse engineering efforts with a special focus on the communication protocols.
+In the following chapter, we briefly discuss the scanner's implementation, present our data set of \gls{ip}-address ranges and evaluate the results obtained by the scan.
+The final chapter summarizes the work of this thesis and proposes future research based off it.

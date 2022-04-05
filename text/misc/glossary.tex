@@ -1,0 +1,95 @@
+\makeglossaries%
+
+% Acronyms
+\newacronym{api}{API}{application programming interface}
+\newacronym{ascii}{ASCII}{American Standard Code for Information Interchange}
+\newacronym{cdn}{CDN}{content delivery network}
+\newacronym{ddos}{DDoS}{distributed denial-of-service}
+\newacronym[longplural={dynamic-link libraries}]{dll}{DLL}{dynamic-link library}
+\newacronym{dns}{DNS}{Domain Name System}
+\newacronym{drm}{DRM}{Digital Rights Management}
+\newacronym{http}{HTTP}{Hypertext Transfer Protocol}
+\newacronym{https}{HTTPS}{Hypertext Transfer Protocol Secure}
+\newacronym{iana}{IANA}{Internet Assigned Numbers Authority}
+\newacronym{iot}{IoT}{Internet of Things}
+\newacronym{ip}{IP}{Internet Protocol}
+\newacronym{ip4}{IPv4}{Internet Protocol (Version 4)}
+\newacronym{irc}{IRC}{Internet Relay Chat}
+\newacronym{it}{IT}{information technology}
+\newacronym{os}{OS}{operating system}
+\newacronym{p2p}{P2P}{peer-to-peer}
+\newacronym{ripe}{RIPE NCC}{Réseaux IP Européens Network Coordination Centre}
+\newacronym{tcp}{TCP}{Transmission Control Protocol}
+\newacronym{tls}{TLS}{Transport Layer Security}
+\newacronym{ttl}{TTL}{time to live}
+\newacronym{vm}{VM}{virtual machine}
+\newacronym{vnc}{VNC}{Virtual Network Computing}
+\newacronym{xml}{XML}{Extensible Markup Language}
+
+% Glossary
+\newglossaryentry{bot}{
+    name={bot},
+    description={A bot is a compromised host participating in a \gls{bn}. It executes commands issued by the \gls{bm} without interaction from the user. The responsible \gls{mw} usually employs sophisticated persistence mechanisms to stay on the machine even after reboots.}
+}
+\newglossaryentry{bn}{
+    name={botnet},
+    description={The term botnet describes a network of connected hosts controlled by a \gls{c2} server which is used for various malicious purposes. Common scenarios include \gls{ddos}, spam email delivery and credential theft.}
+}
+\newglossaryentry{bm}{
+    name={botmaster},
+    description={The operators of a \gls{bn} are called botmasters. They are in charge of the \gls{c2} server and usually benefit from the \gls{bn}' malicious activity either directly or by renting its service to black-market customers.}
+}
+\newglossaryentry{crawler}{
+    name={crawler},
+    description={Crawling describes the process of systematically browsing a webservice typically websites. In the context of this thesis a \gls{bn} crawlers enumerate the connected peers of a \gls{bn} usually through \gls{pl} traversal to gain insights about the total population count.}
+}
+\newglossaryentry{hp}{
+    name={honeypot},
+    description={Honeypots are applications designed to attract the attention of potential hackers by providing fake data that appears legitimate. As the honeypot is not used in any production systems any connection attempt can usually be attributed to malicious intent.}
+}
+\newglossaryentry{ioc}{
+      type=\acronymtype,
+      name={IOC},
+      description={indicator of compromise, \glsseeformat[see:]{gls-ioc}{}},
+      firstplural={\glspl{gls-ioc} (IOCs)\glsadd{gls-ioc}}
+  }
+\newglossaryentry{gls-ioc}{
+      name={indicator of compromise},
+      description={Indicators of compromise (IOCs) are artifacts that strongly indicate intrusion or other malicious activity. Common examples are virus signatures and hashes as well as \gls{ip} addresses and domain names of known \glspl{c2}.},
+      plural={indicators of compromise}
+  }
+\newglossaryentry{mw}{
+    name={malware},
+    description={Malware commonly refers to any malicious software often involuntarily installed on a user's machine such as trojans, worms or viruses. In the context of this thesis we mostly use it to describe the \gls{bot} binaries harvesting sensitive data from the host system.}
+}
+\newglossaryentry{node_churn}{
+    name={node churn},
+    description={Node churn describes the process of peers joining and leaving a \gls{p2p} network constantly changing its topology and population count. As this poses a major threat to network connectivity most \glspl{bn} rely on a set of \glspl{sp} to maintain function.}
+}
+\newglossaryentry{pl}{
+    name={peer list},
+    description={In a \gls{p2p} network the peer list of a node participating in the network contains all peers known by this host as well as corresponding information required for connections such as \gls{ip} address and port. In a \gls{bn} this information is highly interesting for monitoring purposes as the analyst can directly use it to expand the list of known \glspl{bot}.}
+}
+\newglossaryentry{sandbox}{
+    name={sandbox},
+    description={A sandbox commonly refers to an isolated environment where a piece of software is executed without (or with limited) access to the host machine. \Glspl{mw} sandboxes especially launch malicious or un-trusted code and capture information about the execution such as used system call, network traffic or opened files.},
+    plural={sandboxes}
+}
+\newglossaryentry{sn}{
+    name={sensor node},
+    description={A sensor node implements a particular \gls{bn} communication protocol and disguises itself as a genuine \gls{sp}. In contrast to a \gls{crawler} is is capable of gathering data about the non-super peers of a \gls{bn} if it has been successfully injected into the \gls{bn}'s \glspl{pl}.}
+}
+\newglossaryentry{sp}{
+    name={super peer},
+    description={In a \gls{p2p} network a super peer describes a peer with a public routable \gls{ip} address allowing it to accept connections from peer behind \gls{nat} devices. The number of super peers is usually significantly lower than the amount of regular peers and they are essential in maintaining connectivity throughout the network.}
+}
+
+% Dual entries
+\newdualentry{apc}{APC}{Async Procedure Calls}{An Async Prodecure Call (APC) is a Windows specific term for functions executing asynchronously on a particular thread. These function calls are are only run if the target thread is in an alertable state (for user-mode APC) and can be scheduled by other processes.}
+\newdualentry{c2}{C2}{Command \& Control server}{A Command \& Control server (C\&C or C2) is the authoritative instance in a \gls{bn}. The \gls{bm} uses it to issue commands to all \glspl{bot}.}
+\newdualentry{dga}{DGA}{domain generation algorithm}{Domain generation algorithms (DGAs) describe a family of algorithms for creating a (large) list of \gls{dns} entries from a set of parameters (usually the current date). \Glspl{bot} use them to avoid hard-coding \gls{ip} addresses or domains of the \gls{c2}.}
+\newdualentry{ids}{IDS}{Intrusion Detection System}{An Intrusion Detection System (IDS) is a hardware device or application to expose malicious activity (typically in network traffic or directly on hosts). Variants can be signature-based (recognizing patterns) or anomaly-based (identifying deviations from a model) and often aggregate multiple data source to minimize the amount of false positive alarms.}
+\newdualentry{nat}{NAT}{network address translation}{Network address translation (NAT) refers to a method of remapping \gls{ip} packets between address spaces. In the context of this thesis it is used to describe the \gls{ip} masquerading devices present in private households or small companies. As incoming traffic it usually filtered a NAT device prevents incoming connections to a host ``behind'' it.}
+\newdualentry{pe}{PE}{Portable Executable}{The Portable Executable (PE) format is a file format for executables, \glspl{dll} and other data most prevalent in Microsoft Windows. Next to the machine code the PE files also contain information related to loading such as linked dependencies and preferred base address.}
+
+%\glsaddall%

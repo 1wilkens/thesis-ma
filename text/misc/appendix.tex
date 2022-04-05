@@ -1,0 +1,35 @@
+% !TEX root ../thesis
+% /* spellchecker: disable */
+\printglossary[type=\acronymtype]
+\printglossary
+
+\chapter{Hashes}\label{ap:Hashes}
+
+\begin{table}[H]
+    \centering
+    \makebox[\linewidth][c]{
+        \begin{tabular}{rl}
+            \toprule
+            Component &
+            MD5\\
+            \midrule
+
+            Dridex loader &
+            \texttt{760390f07cefafadece0638a643d69964433041abeab09b65bfcdb922c047872}\\
+
+            Bot main module &
+            \texttt{166bd27de260cccbfcdcb21efc046288043bd44c4f08e92cd1e1f9eb80cca7ff}\\
+        \end{tabular}
+    }
+    \caption{Hashes of analyzed samples\label{tab:Hashes}}
+\end{table}
+
+\begingroup
+\renewcommand{\cleardoublepage}{}
+\renewcommand{\clearpage}{}
+\chapter{Source code}\label{ap:Source_code}
+\endgroup
+
+\lstinputlisting[caption={DridexWinApiNames}, label={lst:Types::DridexWinApiNames},style=c]{code/dridex_win_api_names.h}
+
+\lstinputlisting[caption={DridexInitStruct (full)}, label={lst:Types::DridexInitStruct_full},style=c]{code/dridex_init_struct.h}

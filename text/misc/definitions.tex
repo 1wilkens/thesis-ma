@@ -1,0 +1,79 @@
+% !TEX root ../thesis
+% /* spellchecker: disable */
+
+% ## META ##
+\def\title{Reverse Engineering and Monitoring the Dridex Botnet}
+\def\author{Florian Wilkens}
+\def\email{1wilkens@informatik.uni-hamburg.de}
+\def\studentId{6324030}
+
+% ## COLORS ##
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{comment-green}{HTML}{009900}
+
+\definecolor{lightcyan}{rgb}{0.84,1,1}
+\definecolor{lightgreen}{rgb}{0.64,1,0.71}
+\definecolor{lightred}{rgb}{1,0.7,0.71}
+\definecolor{darkred}{rgb}{0.502,0.082,0.082}
+
+\definecolor{uhhred}{cmyk}{0,100,100,0}
+
+% ## LISTINGS ##
+\lstset{
+    basicstyle=\ttfamily,
+    breakatwhitespace=true,
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{comment-green},
+    escapeinside={\%*}{*},
+    frame=single,
+    keywordstyle=\color{blue},
+    numbers=left,
+    numberstyle=\footnotesize,
+    rulecolor=\color{black},
+    % prebreak=\textbackslash,
+    postbreak=\hbox{\(\hookrightarrow\) },
+    showstringspaces=false,
+    stringstyle=\color{red},
+    tabsize=4
+}
+
+\lstdefinestyle{plain}{
+    numbers=none
+}
+
+\lstdefinestyle{pseudo}{
+    morecomment=[l]{//},
+    commentstyle=\color{gray},
+    keywords={DO, WHILE, IF, NULL, FOR, AND, CONST, GLOBAL},
+    keywordstyle=\bfseries
+    %numbers=none
+}
+
+\lstdefinestyle{asm}{
+    language=[x86masm]Assembler,
+    keywords={mov, cmp, jnz, xor},
+    keywords=[2]{ebx, edx},
+    keywordstyle=[2]\color{red},
+}
+
+\lstdefinestyle{shell}{
+    %language=sh
+}
+
+\lstdefinestyle{c}{
+    language=C,
+    morekeywords={pragma}
+}
+
+\lstdefinestyle{win}{
+    style=c,
+    numbers=none,
+    morekeywords={BOOL, FARPROC, HINSTANCE, DWORD, LPVOID}
+}
+
+\lstdefinestyle{ida}{
+    style=c,
+    numbers=none,
+    morekeywords={HeapString}
+}

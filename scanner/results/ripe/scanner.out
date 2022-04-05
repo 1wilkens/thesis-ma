@@ -1,0 +1,47 @@
+Dridex L2 Scanner starting up..
+Starting scan
+Scanning port 443 (10235883 IP addresses)
+Found infected host @ 80.23.90.155:443
+Found infected host @ 188.221.25.192:443
+Found infected host @ 82.153.166.119:443
+Found infected host @ 130.241.34.38:443
+Found infected host @ 62.75.197.197:443
+Found infected host @ 51.52.81.84:443
+Found infected host @ 81.137.92.68:443
+Found infected host @ 194.42.115.166:443
+Found infected host @ 81.137.92.71:443
+Found infected host @ 93.107.176.93:443
+Found infected host @ 194.119.211.166:443
+Found infected host @ 81.5.185.69:443
+Found infected host @ 195.235.88.217:443
+Found infected host @ 46.9.112.254:443
+Found infected host @ 213.123.178.59:443
+Found infected host @ 95.45.234.219:443
+Found infected host @ 5.198.67.116:443
+Found infected host @ 37.235.54.165:443
+Found infected host @ 92.232.148.86:443
+Found infected host @ 86.139.74.160:443
+Found infected host @ 78.130.145.231:443
+Found infected host @ 78.129.206.203:443
+Found infected host @ 79.73.56.147:443
+Found infected host @ 193.251.189.134:443
+Found infected host @ 81.225.65.219:443
+Found infected host @ 176.170.224.112:443
+Found infected host @ 134.213.150.227:443
+Found infected host @ 83.247.143.9:443
+Finished scanning port 443
+28 total infected IPs until now
+Scanning port 8443 (1191766 IP addresses)
+Found infected host @ 185.157.232.227:8443
+Finished scanning port 8443
+29 total infected IPs until now
+Scanning port 3443 (382055 IP addresses)
+Found infected host @ 141.255.128.113:3443
+Found infected host @ 194.50.139.140:3443
+Finished scanning port 3443
+31 total infected IPs until now
+Scanning port 4443 (288606 IP addresses)
+Finished scanning port 4443
+31 total infected IPs until now
+Scan complete, found 31 infected IPs
+All done! Exiting..

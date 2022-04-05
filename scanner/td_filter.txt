@@ -1,0 +1,1 @@
+tcp port 3443 and tcp[tcpflags] & (tcp-syn) != 0

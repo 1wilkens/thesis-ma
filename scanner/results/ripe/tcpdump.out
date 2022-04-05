@@ -1,0 +1,5 @@
+nohup: ignoring input
+tcpdump: listening on eth1, link-type EN10MB (Ethernet), capture size 262144 bytes
+904746 packets captured
+1875298 packets received by filter
+0 packets dropped by kernel

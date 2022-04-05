@@ -1,0 +1,44 @@
+Dridex L2 Scanner starting up..
+Starting scan
+Scanning port 443 (911663 IP addresses)
+Finished scanning port 443
+25 total infected IPs until now
+Scanning port 8443 (160695 IP addresses)
+Finished scanning port 8443
+27 total infected IPs until now
+Scanning port 3443 (61310 IP addresses)
+Finished scanning port 3443
+28 total infected IPs until now
+Scanning port 4443 (92061 IP addresses)
+Finished scanning port 4443
+28 total infected IPs until now
+Scanning port 444 (86660 IP addresses)
+Finished scanning port 444
+28 total infected IPs until now
+Scanning port 448 (59962 IP addresses)
+Finished scanning port 448
+28 total infected IPs until now
+Scanning port 843 (62322 IP addresses)
+Finished scanning port 843
+28 total infected IPs until now
+Scanning port 943 (62385 IP addresses)
+Finished scanning port 943
+28 total infected IPs until now
+Scanning port 1443 (61938 IP addresses)
+Finished scanning port 1443
+28 total infected IPs until now
+Scanning port 80 (993946 IP addresses)
+Finished scanning port 80
+71 total infected IPs until now
+Scanning port 8080 (214728 IP addresses)
+Finished scanning port 8080
+77 total infected IPs until now
+Scanning port 8000 (180309 IP addresses)
+Finished scanning port 8000
+79 total infected IPs until now
+Scanning port 8888 (73965 IP addresses)
+Finished scanning port 8888
+79 total infected IPs until now
+Scan complete, found 79 infected IPs
+Writing results to output file
+All done! Exiting..

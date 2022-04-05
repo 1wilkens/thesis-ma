@@ -1,0 +1,46 @@
+% !TEX root ../thesis
+\chapter{Conclusion\label{ch:Conclusion}}
+
+This thesis analyzed the Dridex \gls{bn} and presented descriptions of its architecture and communication protocols.
+With the knowledge acquired we were able to detect and monitor a limited set of \glspl{sp}/layer 2 (L2) nodes which indicates that these host actually communicate through the protocols discovered.
+
+
+\section{Results}\label{sec:Conclusion::Results}
+From an architectural standpoint we covered the whole infection process starting from the dropper up to the complete \gls{bot} stage.
+Every component was described as accurately as possible with an extended focus on the main bot module as it is responsible for the communication with the \gls{bn} and \gls{c2}.
+We briefly documented the several functionalities provided by the module as well as a selection of obfuscation techniques that were encountered.
+The focus was placed on byte-exact representations of all network communication to bootstrap further research.
+
+To efficiently detect L2 nodes in large \gls{ip}-address ranges we chose to emulate the \emph{CheckMe} process.
+This part of the \gls{p2p} protocol forces the \gls{sp} to attempt a connection to the scanning host.
+Correlating the \gls{ip} addresses that returned a proper, protocol conforming message with the hosts that tried to establish a connection during the scan provides a strong \gls{ioc}.
+For the monitoring component the `\lstinline|ping|' request was chosen as it increases response time allowing for quicker uptime probing.
+
+As Great Britain was a major target of past Dridex campaigns, we performed a scan of all large subnets allocated to this region.
+Although the analyzed sample, and therefore the campaign, was released 8 month ago, we were able to verify 42 total \glspl{sp} across Europe.
+We monitored the detected L2 nodes, building up an uptime profile throughout the day and retrieving their unique \emph{BotId}.
+The results obtained supported the theory that a subset of \gls{sp} are running on office machines which are turned off in the evening.
+Finally, a potential vulnerability and an information leak were discovered which might aid in future takedown attempts.
+
+
+\section{Future work}\label{sec:Conclusion::Future_work}
+While this thesis provides a solid basis for understanding and monitoring the malware, several aspects should be covered in more detail in future work.
+Based off the knowledge presented, certain questions remain open.
+
+\begin{description}
+    \item[Continuous monitoring]
+    Although the scanning and crawling were highly important to verify the basic understanding of the \gls{p2p} communication, the gathered data remains inconclusive for real assumptions about Dridex's size and reach.
+    To gain further insights into the \gls{bn}'s population counts, longer, continuous monitoring is essential.
+    This would also help to detect changes and updates in the protocol as it has already evolved several times in the past.
+    \item[Binary and \gls{pl} updates]
+    The mechanisms and protocol messages for both binary and \gls{pl} updates were out of scope for this thesis and propose a promising research question.
+    As these processes change the state on the infected host, they could contain a vulnerability to potentially take down Dridex.
+    Additionally these requests are essential for a traditional crawling approach to deal with \gls{node_churn} without having to rescan the whole Internet periodically.
+    \item[Prevention]
+    Details about the loader stage and especially the memory injection technique and target processes were not fully analyzed in this thesis as they do not directly influence communication protocols.
+    This limits the results' usefulness in prevention scenarios particularly on end-user machines which (usually) cannot be scanned from the open Internet.
+    Future research could help identify Dridex during the infection process for example through registry keys or the initial \gls{pl} download from the distribution server.
+    \item[Vulnerabilty analysis]
+    While we discovered a weakness in length validations in several functions handling the \gls{p2p} protocol, it remains unclear, if these can be exploited in a meaningful way to manipulate or cleanup a Dridex infection.
+    In combination with the research about the update process mentioned above, this could assist in a future takedown attempt.
+\end{description}

@@ -1,0 +1,17 @@
+\chapter*{Abstract}\label{ch:Abstract}
+
+\thispagestyle{empty}
+
+In the last years \glspl{bn} present a growing threat to end-users and network administrators alike.
+The large networks of infected hosts are able to deliver massive \gls{ddos} attacks and allow the \gls{bm} to exfiltrate data from the \glspl{bot} in nearly untraceable ways.
+With the evolution from centralized architectures to \gls{p2p} networks \gls{bn} became more resilient to takedown attempts by law enforcement.
+As monitoring is more important then ever to evaluate the threats posed by them.
+Because of their resilience, exploiting vulnerabilities in communication protocols is often the only way to take down a \gls{bn}.
+
+This thesis analyzes and monitors one of the most dangerous \glspl{bn} today, the Dridex financial trojan, with a focus on its \gls{p2p} protocol.
+It provides byte-level descriptions of request and response messages to bootstrap further research.
+Addtitionally, details of the sophisticated module execution process as well as the bot main module's internal architecture are presented.
+To verify our findings about the \gls{mw} the \emph{Dridex L2 Scanner} was developed, applied to large \gls{ip}-address ranges from Great Britain and Europe and revealed 42 total \glspl{sp} which were then monitored for a short timespan.\\
+%
+From a protocol standpoint no immediate vulnerabilities could be found in the analyzed messages of Dridex's \gls{p2p} communication besides a minor information leak.
+Future research should continue this research to support future takedown attempts.

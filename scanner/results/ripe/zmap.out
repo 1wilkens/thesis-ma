@@ -1,0 +1,25 @@
+Scanning port: 443
+Nov 07 13:34:53.453 [INFO] zmap: started
+Nov 07 13:34:53.453 [INFO] zmap: zmap selected output module: csv
+Scanning port: 443
+Nov 07 13:35:26.867 [INFO] zmap: started
+Nov 07 13:35:26.867 [INFO] zmap: zmap selected output module: csv
+Scanning port: 443
+Nov 07 15:38:56.116 [INFO] zmap: started
+Nov 07 15:38:56.116 [INFO] zmap: zmap selected output module: csv
+Nov 07 20:58:13.694 [INFO] zmap: completed
+Scanning port: 8443
+Nov 07 20:58:13.712 [INFO] zmap: started
+Nov 07 20:58:13.712 [INFO] zmap: zmap selected output module: csv
+Nov 08 02:30:30.391 [INFO] zmap: completed
+Scanning port: 3443
+Nov 08 02:30:30.423 [INFO] zmap: started
+Nov 08 02:30:30.423 [INFO] zmap: zmap selected output module: csv
+Nov 08 07:37:07.337 [INFO] zmap: completed
+Scanning port: 4443
+Nov 08 07:37:07.355 [INFO] zmap: started
+Nov 08 07:37:07.355 [INFO] zmap: zmap selected output module: csv
+scripts/scan_open_ports.sh: line 12: 19461 Terminated              $cmd
+Scanning port: 444
+Nov 08 09:40:18.229 [INFO] zmap: started
+Nov 08 09:40:18.230 [INFO] zmap: zmap selected output module: csv

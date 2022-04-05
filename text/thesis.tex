@@ -1,0 +1,254 @@
+% /* spellchecker: disable */
+\documentclass[
+    12pt,
+    a4paper,
+    BCOR=10mm,
+    %chapterprefix,
+    DIV=14,
+    listof=totoc,
+    bibliography=totoc,
+    headsepline
+]{scrbook}
+
+% Encoding Options
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Modern latin font
+\usepackage{lmodern}
+% Language
+\usepackage[english]{babel}
+
+% BibLaTex incl. Biber as backend
+\usepackage[
+    % General options
+    backend=biber,
+    style=numeric,
+    sorting=nyt,
+    % Specific options
+    % backref=true,
+    doi=true,
+    eprint=false,
+    hyperref=true,
+    url=true]{biblatex}
+\addbibresource{sources.bib}
+
+% change date format from 'mm/dd/yyyy' to 'dd.mm.yyyy' TODO: revert later?
+\renewbibmacro*{url+urldate}{%
+\printfield{url}%
+\iffieldundef{urlyear}
+    {}
+    {\setunit*{\addspace}%
+    \printtext[urldate]{\printfield{urlday}\setunit*{\adddot\addthinspace}%
+            \printfield{urlmonth}\setunit*{\adddot\addthinspace}%
+            \printfield{urlyear}%\setunit*{\adddot}
+}}}%
+
+\addto\captionsenglish{% Replace "english" with the language you use
+    \renewcommand{\contentsname}{Table of Contents}
+}
+
+% Load xcolor first
+\usepackage[usenames, dvipsnames]{xcolor}
+
+% Various useful packages
+\usepackage[footnote]{acronym}
+\usepackage{amsfonts}
+\usepackage[page]{appendix}
+\usepackage{booktabs}
+\usepackage{bytefield}
+\usepackage{caption}
+\usepackage[autostyle,babel,strict]{csquotes}
+\usepackage{enumitem}
+\usepackage{footnote}
+%\usepackage{float}
+\usepackage{floatrow}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{microtype}
+\usepackage{multirow}
+\usepackage{pgfplots}
+\usepackage[section]{placeins}
+\usepackage{scrlayer-scrpage}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage[titles]{tocloft}
+\usepackage{todonotes}
+\usepackage{units}
+\usepackage{xparse}
+
+\geometry{outer=3.5cm, inner=2.5cm, top=3cm, bottom=3cm}
+%\usepackage{showframe}
+%\usepackage{layout}
+
+\usetikzlibrary{arrows,calc,patterns,positioning,shapes}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{dateplot, statistics}
+
+% For dates
+\newcommand{\leadingzero}[1]{\ifnum #1<10 0\the#1\else\the#1\fi}
+
+% Allow footnotes in tables
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+
+% Use hyperref last to make sure it can define all necessary commands
+\usepackage[pdfborder={0 0 0}]{hyperref}
+
+\addto\extrasenglish{%
+    \def\chapterautorefname{Chapter}%
+    \def\sectionautorefname{Section}%
+    \def\subsectionautorefname{\sectionautorefname}%
+}
+\newcommand*{\Appendixautorefname}{Appendix}
+
+% Floatrow command for tables
+\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+
+% Use glossaries/xindy after hyperref to make it use links
+\usepackage[acronym,nonumberlist,nopostdot,numberedsection,toc,xindy]{glossaries-extra}
+\usepackage[xindy]{imakeidx}
+
+% Command to create dual entries (acronyms with description)
+\NewDocumentCommand{\newdualentry}{ m m m m } {%
+  \newglossaryentry{gls-#1}{%
+      name={#3},%
+      description={#4}
+  }
+  \newglossaryentry{#1}{
+      type=\acronymtype,
+      name={#2},
+      description={#3, \glsseeformat[see:]{gls-#1}{}},
+      first={\gls{gls-#1} (#2)\glsadd{gls-#1}}
+  }
+}
+
+% Setup glossaries
+\loadglsentries[main]{misc/glossary}
+% \renewcommand*{\glsautoprefix}{ap:gl_}
+
+% Limit ToC depth
+% TODO: reenable
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+% Customize itemize
+\setlist[itemize]{itemsep=-0.25em, label=--}
+
+% Page (indent) definitions
+\sloppy
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1.2ex plus 0.5ex minus 0.5ex}
+
+\include{misc/definitions}
+
+% Some pdf related meta-information
+\hypersetup{
+    pdftitle = {\title},
+    pdfauthor = {\author},
+    pdfsubject = {Master's Thesis},
+    pdfkeywords = {dridex, security, botnet, p2p, reverse engineering}
+}
+
+% Define some custom commands for inlining code, file names or shell commands
+\newcommand{\mdinline}[1]{\colorbox{light-gray}{\texttt{#1}}}
+\newcommand{\shinline}[1]{\textbf{\texttt{#1}}}
+
+% Custom footnote command that adds \hspace before the text
+\newcommand{\fnote}[1]{\footnote{\hspace{2pt}#1}}
+
+% Abstract command
+\newcommand{\abstract}[1]{\textit{#1}\bigskip}
+
+% Colored bitbox
+\newcommand{\colorbitbox}[4][]{%
+  \rlap{\bitbox[#1]{#3}{\color{#2}\rule{\width}{\height}}}%
+  \bitbox[]{#3}{#4}}
+
+% Tikz commands
+\newcommand{\flowarrowclip}[2]{%
+    \fill[#2] let \p1 = ($(#1.east arrow tip) - (#1.before east arrow tip)$) in
+        (#1.north west) -- ($(#1.north west)!.5!(#1.south west) + (\x1, 0)$) -- (#1.south west) -- ++(-5mm, 0) -- ($(#1.north west) + (-5mm, 0)$) -- cycle;
+}
+\newcommand{\flowarrowfirst}[4]{%
+    \node[arrowbox, fill=#3] (#1) {#2};
+    \flowarrowclip{#1}{#4}
+}
+\newcommand{\flowarrow}[5]{%
+    \node[arrowbox, left=of #5.center, fill=#3] (#1) {#2};
+    \flowarrowclip{#1}{#4}
+}
+
+% Change name of listing from 'Listings' to 'List of Listings' to be consistent
+\renewcommand*{\lstlistlistingname}{List of Listings}
+
+\begin{document}
+
+\input{misc/titlepage}
+
+\include{misc/acknowledgements}
+
+\include{chapters/00_abstract}
+
+\microtypesetup{protrusion=false} % disable protrusion locally for the toc
+\tableofcontents                  % prints Table of Contents
+\microtypesetup{protrusion=true}  % reenable protrusion
+
+\include{chapters/01_introduction}
+\include{chapters/02_related_work}
+\include{chapters/03_dridex}
+\include{chapters/04_evaluation}
+\include{chapters/05_conclusion}
+
+% Bibliography
+\printbibliography%
+
+% Lists of *
+\microtypesetup{protrusion=false} % disable protrusion locally for the following lists
+
+% We don't want new pages after these "chapters"
+\begingroup
+%\renewcommand{\cleardoublepage}{}
+%\renewcommand{\clearpage}{}
+\let\cleardoublepage\clearpage
+
+\listoffigures
+\listoftables
+\lstlistoflistings%
+
+\endgroup
+
+\microtypesetup{protrusion=true}  % reenable protrusion
+
+% Appendices
+\begin{appendices}
+\include{misc/appendix}
+\end{appendices}
+
+\newpage
+
+\thispagestyle{empty}
+
+\chapter*{}
+
+% Eidesstattliche Erklärung
+\section*{Eidesstattliche Erklärung}
+
+Hiermit versichere ich an Eides statt, dass ich die vorliegende Arbeit im Master-
+studiengang Informatik selbstständig verfasst und keine anderen als die angegebe-
+nen Hilfsmittel---insbesondere keine im Quellenverzeichnis nicht benannten Internet-
+Quellen---benutzt habe. Alle Stellen, die wörtlich oder sinngemäß aus Veröffentlichun-
+gen entnommen wurden, sind als solche kenntlich gemacht. Ich versichere weiterhin,
+dass ich die Arbeit vorher nicht in einem anderen Prüfungsverfahren eingereicht habe
+und die eingereichte schriftliche Fassung der auf dem elektronischen Speichermedium
+entspricht.
+
+\bigskip
+\bigskip
+
+Hamburg, den \leadingzero{\day}.\leadingzero{\month}.\leadingzero{\year} \quad \dotfill
+
+\end{document}
